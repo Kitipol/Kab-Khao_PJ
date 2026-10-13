@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pumpuang-online</title>
+ 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <!-- ===================== ส่วนหัวเว็บ ===================== -->
+    <header>
+        <h1>Pumpuang-online</h1>
+        <nav>
+            <a href="#products">สินค้า</a>
+            <a href="#cart">ตะกร้า (<span id="cart-count">0</span>)</a>
+            <a href="#checkout">สั่งซื้อ</a>
+        </nav>
+    </header>
+ 
+    <main>
+ 
+        <!-- ===================== ส่วนค้นหา / กรองสินค้า ===================== -->
+        <section id="filter-section">
+            <input type="text" id="search-input" placeholder="ค้นหาสินค้า...">
+ 
+            <select id="category-select">
+                <option value="all">ทุกหมวดหมู่</option>
+                <option value="clothes">เสื้อผ้า</option>
+                <option value="gadget">แกดเจ็ต</option>
+                <option value="food">อาหาร</option>
+            </select>
+        </section>
+ 
+        <!-- ===================== ส่วนแสดงสินค้า ===================== -->
+        <section id="products">
+            <h2>สินค้าทั้งหมด</h2>
+ 
+            <div id="product-list">
+ 
+                <!-- สินค้าแต่ละชิ้นคือ 1 article -->
+                <!-- data-* ใช้เก็บข้อมูลไว้ให้ JavaScript อ่านภายหลัง -->
+                <article class="product" data-id="1" data-name="เสื้อยืดสีขาว" data-price="250" data-category="clothes">
+                    <div class="product-image">👕</div>
+                    <h3>เสื้อยืดสีขาว</h3>
+                    <p class="price">250 บาท</p>
+                    <button class="add-btn">เพิ่มลงตะกร้า</button>
+                </article>
+ 
+                <article class="product" data-id="2" data-name="กางเกงยีนส์" data-price="590" data-category="clothes">
+                    <div class="product-image">👖</div>
+                    <h3>กางเกงยีนส์</h3>
+                    <p class="price">590 บาท</p>
+                    <button class="add-btn">เพิ่มลงตะกร้า</button>
+                </article>
+ 
+                <article class="product" data-id="3" data-name="หูฟังบลูทูธ" data-price="890" data-category="gadget">
+                    <div class="product-image">🎧</div>
+                    <h3>หูฟังบลูทูธ</h3>
+                    <p class="price">890 บาท</p>
+                    <button class="add-btn">เพิ่มลงตะกร้า</button>
+                </article>
+ 
+                <article class="product" data-id="4" data-name="เมาส์ไร้สาย" data-price="350" data-category="gadget">
+                    <div class="product-image">🖱️</div>
+                    <h3>เมาส์ไร้สาย</h3>
+                    <p class="price">350 บาท</p>
+                    <button class="add-btn">เพิ่มลงตะกร้า</button>
+                </article>
+ 
+                <article class="product" data-id="5" data-name="คุกกี้ช็อกโกแลต" data-price="80" data-category="food">
+                    <div class="product-image">🍪</div>
+                    <h3>คุกกี้ช็อกโกแลต</h3>
+                    <p class="price">80 บาท</p>
+                    <button class="add-btn">เพิ่มลงตะกร้า</button>
+                </article>
+ 
+                <article class="product" data-id="6" data-name="กาแฟคั่วบด" data-price="199" data-category="food">
+                    <div class="product-image">☕</div>
+                    <h3>กาแฟคั่วบด</h3>
+                    <p class="price">199 บาท</p>
+                    <button class="add-btn">เพิ่มลงตะกร้า</button>
+                </article>
+ 
+            </div>
+ 
+            <!-- ข้อความนี้จะแสดงเมื่อค้นหาแล้วไม่เจอสินค้า (ซ่อนไว้ก่อน) -->
+            <p id="no-result" class="hidden">ไม่พบสินค้าที่ค้นหา</p>
+        </section>
+ 
+        <!-- ===================== ส่วนตะกร้าสินค้า ===================== -->
+        <section id="cart">
+            <h2>ตะกร้าสินค้า</h2>
+ 
+            <p id="empty-cart">ยังไม่มีสินค้าในตะกร้า</p>
+ 
+            <table id="cart-table" class="hidden">
+                <thead>
+                    <tr>
+                        <th>สินค้า</th>
+                        <th>ราคา</th>
+                        <th>จำนวน</th>
+                        <th>รวม</th>
+                        <th>ลบ</th>
+                    </tr>
+                </thead>
+                <!-- แถวสินค้าในตะกร้าจะถูกสร้างด้วย JavaScript -->
+                <tbody id="cart-body"></tbody>
+            </table>
+ 
+            <p class="total">ราคารวมทั้งหมด: <span id="total-price">0</span> บาท</p>
+            <button id="clear-btn">ล้างตะกร้า</button>
+        </section>
+ 
+        <!-- ===================== ส่วนฟอร์มสั่งซื้อ ===================== -->
+        <section id="checkout">
+            <h2>ข้อมูลการสั่งซื้อ</h2>
+ 
+            <form id="checkout-form">
+                <label for="name">ชื่อ-นามสกุล</label>
+                <input type="text" id="name" required>
+ 
+                <label for="phone">เบอร์โทรศัพท์</label>
+                <input type="tel" id="phone" required>
+ 
+                <label for="address">ที่อยู่จัดส่ง</label>
+                <textarea id="address" rows="3" required></textarea>
+ 
+                <button type="submit">ยืนยันการสั่งซื้อ</button>
+            </form>
+ 
+            <!-- ข้อความแจ้งผลหลังสั่งซื้อ (ซ่อนไว้ก่อน) -->
+            <p id="order-message" class="hidden"></p>
+        </section>
+ 
+    </main>
+ 
+    <!-- ===================== ส่วนท้ายเว็บ ===================== -->
+    <footer>
+        <p>&copy; 2026 Pumpuang-online</p>
+    </footer>
+ 
+    <!-- ไฟล์ JavaScript (จะทำในขั้นตอนถัดไป) -->
+    <script src="script.js"></script>
+</body>
+</html>
