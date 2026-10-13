@@ -1,9 +1,193 @@
+/* ===================== ตั้งค่าพื้นฐาน ===================== */
 * {
-    margin: 0px;
-    padding: 0px;
+    box-sizing: border-box;   /* ให้ padding/border รวมอยู่ในความกว้างของกล่อง */
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Tahoma, Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.5;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+/* คลาสสำหรับซ่อนองค์ประกอบ (JavaScript จะเพิ่ม/ลบคลาสนี้) */
+.hidden {
+    display: none;
+}
+
+/* ===================== ส่วนหัวเว็บ ===================== */
+header {
+    background-color: #2c7a4b;
+    color: white;
+    padding: 15px 30px;
+    display: flex;                    /* จัดชื่อร้านกับเมนูให้อยู่แถวเดียวกัน */
+    justify-content: space-between;   /* ชื่อร้านชิดซ้าย เมนูชิดขวา */
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===================== เนื้อหาหลัก ===================== */
+main {
+    max-width: 900px;       /* จำกัดความกว้างไม่ให้กว้างเกินไป */
+    margin: 20px auto;      /* auto = จัดให้อยู่กึ่งกลางหน้าจอ */
+    padding: 0 15px;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+/* ===================== ส่วนค้นหา / กรองสินค้า ===================== */
+#filter-section {
+    display: flex;
+    gap: 10px;
+}
+
+#search-input {
+    flex: 1;     /* ให้ช่องค้นหายืดเต็มพื้นที่ที่เหลือ */
+}
+
+input,
+select,
+textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+/* ===================== ส่วนแสดงสินค้า ===================== */
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);   /* แบ่งเป็น 3 คอลัมน์เท่า ๆ กัน */
+    gap: 15px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.product-image {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: #c0392b;
     font-weight: bold;
+    margin: 8px 0;
+}
+
+#no-result {
+    text-align: center;
+    color: #888;
+}
+
+/* ===================== ปุ่ม ===================== */
+button {
+    background-color: #2c7a4b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1f5c37;
+}
+
+/* ปุ่มล้างตะกร้าใช้สีแดงให้ต่างจากปุ่มอื่น */
+#clear-btn {
+    background-color: #c0392b;
+}
+
+#clear-btn:hover {
+    background-color: #962d22;
+}
+
+/* ===================== ส่วนตะกร้าสินค้า ===================== */
+table {
+    width: 100%;
+    border-collapse: collapse;   /* รวมเส้นขอบของช่องให้เป็นเส้นเดียว */
+    margin-bottom: 15px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #eee;
+}
+
+.total {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ===================== ฟอร์มสั่งซื้อ ===================== */
+#checkout-form {
+    display: flex;
+    flex-direction: column;   /* เรียงช่องกรอกจากบนลงล่าง */
+    gap: 8px;
+}
+
+#checkout-form button {
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+#order-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 4px;
+}
+
+/* ===================== ส่วนท้ายเว็บ ===================== */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* ===================== รองรับหน้าจอเล็ก (มือถือ) ===================== */
+@media (max-width: 600px) {
+    #product-list {
+        grid-template-columns: repeat(2, 1fr);   /* ลดเหลือ 2 คอลัมน์ */
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
