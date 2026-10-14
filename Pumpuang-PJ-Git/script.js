@@ -21,6 +21,8 @@ const checkoutForm = document.getElementById("checkout-form");
 const orderMessage = document.getElementById("order-message");
 
 
+
+
 // ===================== ส่วนที่ 1: ค้นหาและกรองสินค้า =====================
 
 function filterProducts() {
