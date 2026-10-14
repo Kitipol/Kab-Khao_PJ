@@ -6,11 +6,18 @@
 }
 
 body {
+    
     font-family: Tahoma, Arial, sans-serif;
-    background-image: url("pumpuang.jpg");
     color: #333;
     line-height: 1.5;
+
+    background-image: url("images/pumpuang.jpg"); /* รูปพื้นหลัง */
+    background-size: cover;                  /* ขยายรูปให้เต็มหน้าจอ โดยไม่ยืดเบี้ยว */
+    background-position: center;             /* จัดรูปให้อยู่กึ่งกลาง */
+    background-repeat: no-repeat;            /* ไม่ให้รูปวางซ้ำเป็นแผ่น ๆ */
+    background-attachment: fixed;            /* ให้รูปอยู่กับที่ ตอนเลื่อนหน้า */
 }
+
 
 h2 {
     margin-bottom: 15px;
@@ -190,4 +197,12 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
+}
+
+/* รูปสินค้า */
+.product-image img {
+    width: 100%;          /* กว้างเต็มกรอบสินค้า */
+    height: 150px;        /* กำหนดความสูงเท่ากันทุกรูป */
+    object-fit: cover;    /* ครอบตัดรูปให้พอดีกรอบโดยไม่ยืดเบี้ยว */
+    border-radius: 6px;
 }
