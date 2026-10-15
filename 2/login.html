@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ | Pumpuang-online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <header class="sign">
+        <a class="sign__back" href="index.html">‹ กลับหน้าร้าน</a>
+        <h1>Pumpuang-online</h1>
+    </header>
+
+    <main class="card">
+
+        <!-- แท็บสลับระหว่างเข้าสู่ระบบ / สมัครสมาชิก -->
+        <div class="tabs" role="tablist">
+            <button type="button" role="tab" id="tab-login" class="tab active" aria-selected="true" aria-controls="login-form">เข้าสู่ระบบ</button>
+            <button type="button" role="tab" id="tab-register" class="tab" aria-selected="false" aria-controls="register-form">สมัครสมาชิก</button>
+        </div>
+
+        <p id="message" class="message hidden" role="alert"></p>
+
+        <!-- ฟอร์มเข้าสู่ระบบ -->
+        <form id="login-form" class="form" role="tabpanel" aria-labelledby="tab-login">
+            <label for="login-phone">เบอร์โทรศัพท์</label>
+            <input type="tel" id="login-phone" inputmode="numeric" autocomplete="tel" placeholder="เช่น 0812345678" required>
+
+            <label for="login-password">รหัสผ่าน</label>
+            <input type="password" id="login-password" autocomplete="current-password" required>
+
+            <button type="submit" class="btn">เข้าสู่ระบบ</button>
+            <p class="switch">ยังไม่เป็นสมาชิก? <button type="button" class="link" data-go="register">สมัครสมาชิก</button></p>
+        </form>
+
+        <!-- ฟอร์มสมัครสมาชิก -->
+        <form id="register-form" class="form hidden" role="tabpanel" aria-labelledby="tab-register">
+            <label for="reg-name">ชื่อ-นามสกุล</label>
+            <input type="text" id="reg-name" autocomplete="name" required>
+
+            <label for="reg-phone">เบอร์โทรศัพท์ (ใช้เป็นชื่อผู้ใช้)</label>
+            <input type="tel" id="reg-phone" inputmode="numeric" autocomplete="tel" placeholder="เช่น 0812345678" required>
+
+            <label for="reg-address">ที่อยู่จัดส่ง (ไม่บังคับ)</label>
+            <textarea id="reg-address" rows="2" autocomplete="street-address" placeholder="กรอกไว้ แล้วระบบจะใส่ให้ตอนสั่งซื้อ"></textarea>
+
+            <label for="reg-password">รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)</label>
+            <input type="password" id="reg-password" autocomplete="new-password" minlength="6" required>
+
+            <label for="reg-confirm">ยืนยันรหัสผ่าน</label>
+            <input type="password" id="reg-confirm" autocomplete="new-password" required>
+
+            <button type="submit" class="btn">สมัครสมาชิก</button>
+            <p class="switch">เป็นสมาชิกอยู่แล้ว? <button type="button" class="link" data-go="login">เข้าสู่ระบบ</button></p>
+        </form>
+
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
